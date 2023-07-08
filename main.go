@@ -22,8 +22,9 @@ func main() {
 	var userTickets int
 
 	// this is a comment
+	fmt.Println("Enter your name")
+	fmt.Scan(&userName)
 
-	userName = "John Doe"
 	userTickets = 2
 	fmt.Printf("User %v booked %v tickets", userName, userTickets)
 
