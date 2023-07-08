@@ -19,13 +19,23 @@ func main() {
 	fmt.Println("Get your tickets here ")
 
 	var userName string
-	var userTickets int
+	var lastName string
+	var userTickets uint
+	var email string
 
 	// this is a comment
 	fmt.Println("Enter your name")
 	fmt.Scan(&userName)
 
-	userTickets = 2
-	fmt.Printf("User %v booked %v tickets", userName, userTickets)
+	fmt.Println("Enter your last name")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Enter your email")
+	fmt.Scan(&email)
+
+	fmt.Println("Enter number of tickets")
+	fmt.Scan(&userTickets)
+
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will recieve confirmation on your email %v\n", userName, lastName, userTickets, email)
 
 }
