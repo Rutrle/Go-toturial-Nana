@@ -15,7 +15,7 @@ func main() {
 	fmt.Printf("We have total of %v tickets and %v tickets are remaining\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here ")
 
-	for {
+	for { // same as if it would be "for true"
 		var firstName string
 		var lastName string
 		var userTickets uint
@@ -34,35 +34,34 @@ func main() {
 		fmt.Println("Enter number of tickets")
 		fmt.Scan(&userTickets)
 
-		if userTickets > remainingTickets {
-			fmt.Printf("Sorry, we only have %v tickets remaining\n", remainingTickets)
-			continue
+		if userTickets <= remainingTickets {
+			remainingTickets = remainingTickets - userTickets
+			bookings = append(bookings, firstName+" "+lastName)
 
-		}
-		remainingTickets = remainingTickets - userTickets
-		bookings = append(bookings, firstName+" "+lastName)
+			fmt.Printf("Thank you %v %v for booking %v tickets. You will recieve confirmation on your email %v\n", firstName, lastName, userTickets, email)
+			fmt.Printf("Remaining tickets %v for %v\n", remainingTickets, conferenceName)
 
-		fmt.Printf("Thank you %v %v for booking %v tickets. You will recieve confirmation on your email %v\n", firstName, lastName, userTickets, email)
-		fmt.Printf("Remaining tickets %v for %v\n", remainingTickets, conferenceName)
+			fmt.Printf("Bookings so far %v\n", bookings)
 
-		fmt.Printf("Bookings so far %v\n", bookings)
+			firstNames := []string{}
 
-		firstNames := []string{}
+			for _, booking := range bookings {
+				var names = strings.Fields(booking)
+				var firstName = names[0]
+				firstNames = append(firstNames, firstName)
+				// _ is used to identfy unused variables
 
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-			var firstName = names[0]
-			firstNames = append(firstNames, firstName)
-			// _ is used to identfy unused variables
+			}
 
-		}
-
-		fmt.Printf("%v", firstNames)
-		var noTicketsRemaining bool = remainingTickets == 0
-		// alternatively  noTicketsRemaining := remainingTickets == 0
-		if noTicketsRemaining {
-			fmt.Println("Our conferece is sold out, come back next year")
-			break
+			fmt.Printf("%v", firstNames)
+			var noTicketsRemaining bool = remainingTickets == 0
+			// alternatively  noTicketsRemaining := remainingTickets == 0
+			if noTicketsRemaining {
+				fmt.Println("Our conferece is sold out, come back next year")
+				break
+			}
+		} else {
+			fmt.Printf("Sorry we only have %v tickets remaining\n", remainingTickets)
 		}
 	}
 
