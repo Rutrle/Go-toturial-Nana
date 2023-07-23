@@ -11,11 +11,7 @@ func main() {
 	var remainingTickets uint = 50
 	bookings := []string{}
 
-	greetUsers(conferenceName)
-
-	fmt.Printf("Welcome to %v booking app\n", conferenceName)
-	fmt.Printf("We have total of %v tickets and %v tickets are remaining\n", conferenceTickets, remainingTickets)
-	fmt.Println("Get your tickets here ")
+	greetUsers(conferenceName, conferenceTickets, remainingTickets)
 
 	for { // same as if it would be "for true"
 		var firstName string
@@ -52,17 +48,8 @@ func main() {
 
 			fmt.Printf("Bookings so far %v\n", bookings)
 
-			firstNames := []string{}
+			printFirstNames(bookings)
 
-			for _, booking := range bookings {
-				var names = strings.Fields(booking)
-				var firstName = names[0]
-				firstNames = append(firstNames, firstName)
-				// _ is used to identfy unused variables
-
-			}
-
-			fmt.Printf("%v", firstNames)
 			var noTicketsRemaining bool = remainingTickets == 0
 			// alternatively  noTicketsRemaining := remainingTickets == 0
 			if noTicketsRemaining {
@@ -84,8 +71,23 @@ func main() {
 
 }
 
-func greetUsers(confName string) { // types must be specified
+func greetUsers(confName string, confTickets int, remainingTickets uint) { // types must be specified
 	fmt.Printf("Welcome to our conference %v\n", confName)
+	fmt.Printf("we have %v tickets remaining out of %v\n", remainingTickets, confTickets)
+	fmt.Println("Get your tickets here ")
+}
+
+func printFirstNames(bookings []string) {
+	firstNames := []string{}
+
+	for _, booking := range bookings {
+		var names = strings.Fields(booking)
+		var firstName = names[0]
+		firstNames = append(firstNames, firstName)
+		// _ is used to identfy unused variables
+	}
+
+	fmt.Printf("%v", firstNames)
 }
 
 /*
