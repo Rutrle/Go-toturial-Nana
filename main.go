@@ -48,7 +48,9 @@ func main() {
 
 			fmt.Printf("Bookings so far %v\n", bookings)
 
-			printFirstNames(bookings)
+			firstNames := getFirstNames(bookings)
+
+			fmt.Printf("First names of all bookings %v\n", firstNames)
 
 			var noTicketsRemaining bool = remainingTickets == 0
 			// alternatively  noTicketsRemaining := remainingTickets == 0
@@ -77,7 +79,7 @@ func greetUsers(confName string, confTickets int, remainingTickets uint) { // ty
 	fmt.Println("Get your tickets here ")
 }
 
-func printFirstNames(bookings []string) {
+func getFirstNames(bookings []string) []string {
 	firstNames := []string{}
 
 	for _, booking := range bookings {
@@ -87,7 +89,7 @@ func printFirstNames(bookings []string) {
 		// _ is used to identfy unused variables
 	}
 
-	fmt.Printf("%v", firstNames)
+	return firstNames
 }
 
 /*
